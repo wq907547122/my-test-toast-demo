@@ -31,7 +31,7 @@ npm i vue-plugin-my-test-toast --save-dev
 <br/>
 npm install css-loader vue-style-loader --save-dev
 <br/>
-还需要添加样式的加载:
+还需要在webpack.base.conf.js添加样式scss的解析的规则配置:
 ```js{13-16}
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -47,6 +47,7 @@ module.exports = {
   module: {
     rules: [
       ...
+	  // 这里是scss的sass解析样式
       {
         test: /\.scss$/,
         loader: 'sass-loader!style-loader!css-loader',
