@@ -26,6 +26,41 @@ npm run publish
 # 使用插件
 ## 下载依赖
 npm i vue-plugin-my-test-toast --save-dev
+<br/>
+因为使用了SASS样式,所以我们还需要css样式的依赖
+<br/>
+npm install css-loader vue-style-loader --save-dev
+<br/>
+还需要添加样式的加载:
+```js{13-16}
+module.exports = {
+  context: path.resolve(__dirname, '../'),
+  entry: {
+    app: './src/main.js'
+  },
+  output: {
+    ....
+  },
+  resolve: {
+    ...
+  },
+  module: {
+    rules: [
+      ...
+      {
+        test: /\.scss$/,
+        loader: 'sass-loader!style-loader!css-loader',
+      },
+      ...
+    ]
+  },
+  node: {
+    ...
+  }
+}
+
+```
+
 ## 使用
 import Vue from 'vue'
 import MyTestToast from 'vue-plugin-my-test-toast'
